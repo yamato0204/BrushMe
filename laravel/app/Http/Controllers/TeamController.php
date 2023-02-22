@@ -13,7 +13,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('team');
+        return view('team.team');
         //
     }
 
@@ -25,6 +25,7 @@ class TeamController extends Controller
     public function create()
     {
         //チーム作成画面表示
+        return view('team.create');
     }
 
     /**
