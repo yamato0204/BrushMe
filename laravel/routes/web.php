@@ -32,11 +32,15 @@ Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name(
 
 Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name('team');
 
+Route::resource('/team',TeamController::class)
+->middleware(['auth'])->except(['index']);
+
 Route::get('/article',[ArticleController::class,'index'])->middleware(['auth'])->name('article');
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';

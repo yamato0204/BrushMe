@@ -3,9 +3,10 @@
         <div class="mb-8">
             
             <div class="flex justify-center md:justify-start" >
-        <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button onclick="location.href='{{ route('team.create')}}'" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             チーム作成
           </button>
+          
         </div>
         
         </div>
