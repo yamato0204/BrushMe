@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
@@ -13,7 +14,10 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('team.team');
+
+        $teams = Team::all()->sortByDesc('created_at');
+
+        return view('team.team',['teams' => $teams]);
         //
     }
 

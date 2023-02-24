@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -11,9 +13,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('article');
+        #チーム別の記事一覧を表示
+        #チームのid（team_id）を取得
+        $team=Team::findOrFail($id)->id;
+    
+    //チームidが１の時のarticle
+        $articles=Article::whereTeam_id($team)->get();
+       
+        
+        return view('article', compact('articles'));
+        
     }
 
     /**
@@ -35,6 +46,8 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //記事　保存処理
+        //参加条件ー＞記事投稿
+        //記事投稿したら、userテーブルのflag +1
     }
 
     /**

@@ -35,7 +35,13 @@ Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name(
 Route::resource('/team',TeamController::class)
 ->middleware(['auth'])->except(['index']);
 
-Route::get('/article',[ArticleController::class,'index'])->middleware(['auth'])->name('article');
+//Route::get('/article',[ArticleController::class,'index'])->middleware(['auth'])->name('article');
+
+Route::prefix('/team')->
+    middleware('auth')->group(function(){
+Route::get('/{team}/index', [ArticleController::class,'index'])->name('article.index');
+//Route::post('destroy/{owner}',[OwnersController::class, 'expiredOwnerDestroy'])->name('');
+});
 
 
 Route::get('/dashboard', function () {
