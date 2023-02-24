@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TeamSeeder::class,
             TeamUserSeeder::class,
+            ArticleSeeder::class,
 
         ]);
     }

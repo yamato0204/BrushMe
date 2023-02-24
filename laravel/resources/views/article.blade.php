@@ -101,6 +101,7 @@
 
                         
 
+                          @foreach($articles as $article)
                           
                             <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
                                 <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
@@ -108,10 +109,11 @@
                               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
                             </svg>
                             <div class=" w-full flex justify-between">
-                                <div>yamato</div>
-                                <div>2/10 13:45</div>
+                                <div>{{ $article->user->name }}</div>
+                                <div>{{$article->created_at}}</div>
                             
                               </div>
+                              <p>{{ $article->body }}</p>
                                 </div>
                               
                                        
@@ -139,7 +141,7 @@
                                 
                                 </div>
                               </div>
-            
+            @endforeach
             
             
 
@@ -147,28 +149,7 @@
 
 
 
-                              <div class="w-full bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
-                                <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
-                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                            </svg>
-                                </div>
-                            
-                                <div class="p-4 border-t border-gray-200">
-                                  <div class="flex items-center justify-between">
-                                    <h1 class="text-gray-600 font-medium">Helen Smith</h1>
-                                    <button class="text-gray-500 hover:text-gray-900">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                            </svg>
-                                    </button>
-                                  </div>
-                                  <p class="text-gray-400 text-sm my-1">Active</p>
-                                </div>
-                              </div>
-            
-            
-            
+                             
 
 
 
