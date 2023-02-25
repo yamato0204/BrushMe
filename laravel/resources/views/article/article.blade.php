@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
+    <x-slot name="header" class="bg-fixed">
     
         <div class="flex -space-x-2">
             <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
@@ -27,6 +27,15 @@
               </div>
             </div>
           </div>
+          <div class="flex justify-center md:justify-end" >
+            <button onclick="location.href='{{ route('article.create',$article->id) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              
+              </button>
+              
+            </div>
 
       
     </x-slot>
@@ -35,7 +44,7 @@
 
     <div class="py-1">
          
-        <section class="text-gray-600 body-font">
+        <section class="text-gray-600 body-font mt-44">
             <div class="container px-5 py-24 mx-auto flex flex-wrap">
               <div class="lg:w-1/4 md:w-full w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
 
@@ -79,6 +88,7 @@
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>Fifth Link
+
                       </a>
                     </nav>
                   </div>

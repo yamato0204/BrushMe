@@ -1,6 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="mb-8">
+<x-app-layout >
+    <x-slot name="header" >
+        <div class="mb-8 ">
             
             <div class="flex justify-center md:justify-start" >
         <button onclick="location.href='{{ route('team.create')}}'" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
@@ -30,14 +30,14 @@
 
     <div class="py-1">
          
-        <section class="text-gray-600 body-font">
+        <section class="mt-44 text-gray-600 body-font">
             <div class="container px-5 py-24 mx-auto flex flex-wrap">
               <div class="lg:w-1/4 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
 
                 
 
 
-                <div class="bg-white p-4 lg:w-full sm:w-full w-full">
+                <div class="bg-white p-4 lg:w-full sm:w-full w-full ">
                     <h2 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-sm text-center sm:text-left">人気ランキング</h2>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                       <a>
