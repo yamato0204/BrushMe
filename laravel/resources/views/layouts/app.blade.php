@@ -15,23 +15,26 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        
+        <!-- min-h-screen-->
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-100">
+        <div class="fixed w-full">
+            
             @include('layouts.navnav')
 
             <!-- Page Heading -->
-            <header class="z-0 bg-white shadow ">
+            <header class="z-0 bg-white shadow  ">
                 <div class="max-w-7xl mx-auto pt-12 pb-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
+        </div>
+            
 
             <!-- Page Content -->
-            <main>
+            <main class=" bg-blue-100  min-h-screen">
                 {{ $slot }}
             </main>
-        </div>
+        
     </body>
 </html>

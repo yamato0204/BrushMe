@@ -21,9 +21,12 @@ class ArticleController extends Controller
     
     //チームidが１の時のarticle
         $articles=Article::whereTeam_id($team)->get();
+
+        $article=Article::whereTeam_id($team)->first();
+    
        
         
-        return view('article', compact('articles'));
+        return view('article.article', compact('articles','article'));
         
     }
 
@@ -32,9 +35,14 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //記事投稿画面表示
+        $team=Team::findOrFail($id)->id;
+        $article=Article::whereTeam_id($team)->first();
+       
+        return view('article.create',compact('article'));
+        
     }
 
     /**

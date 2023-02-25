@@ -40,7 +40,8 @@ Route::resource('/team',TeamController::class)
 Route::prefix('/team')->
     middleware('auth')->group(function(){
 Route::get('/{team}/index', [ArticleController::class,'index'])->name('article.index');
-//Route::post('destroy/{owner}',[OwnersController::class, 'expiredOwnerDestroy'])->name('');
+Route::get('/{team}/create', [ArticleController::class, 'create'])->name('article.create');
+
 });
 
 
