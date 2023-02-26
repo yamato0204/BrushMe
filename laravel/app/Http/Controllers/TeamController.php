@@ -16,7 +16,7 @@ class TeamController extends Controller
     public function index()
     {
 
-        phpinfo();
+    
         $teams = Team::all()->sortByDesc('created_at');
 
         return view('team.team',['teams' => $teams]);
