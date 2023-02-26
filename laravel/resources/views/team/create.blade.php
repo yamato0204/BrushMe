@@ -24,7 +24,7 @@
           </div>
           <div class="mt-44 lg:w-1/2 md:w-2/3 mx-auto">
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
-            <form method="POST" action="{{ route('team.store')}}">
+            <form method="POST" action="{{ route('team.store')}}" enctype="multipart/form-data">
               @csrf
             <div class="-m-2">
               <div class="p-2 w-1/2 mx-auto">
@@ -52,7 +52,7 @@
                         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input id="dropzone-file" type="file" class="bg-gray-100 hidden" />
+                    <input name="image" id="dropzone-file" type="file" accept="image/png,image/jpeg,image/jpg" class="bg-gray-100 hidden" />
                 </label>
             </div> 
 

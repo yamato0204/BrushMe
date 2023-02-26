@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -15,6 +16,7 @@ class TeamController extends Controller
     public function index()
     {
 
+        phpinfo();
         $teams = Team::all()->sortByDesc('created_at');
 
         return view('team.team',['teams' => $teams]);
@@ -41,6 +43,12 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         //チーム作成　保存処理
+        $imageFile = $request->image;
+        if(!is_null($imageFile) && $imageFile->isValid() ){
+            Storage::putFile('public/teams',$imageFile);
+       }
+
+       return redirect()->route('team');
     }
 
     /**

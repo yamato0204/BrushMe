@@ -93,7 +93,7 @@
                           <a href="{{ route('article.index', ['team' => $team->id] )}}">
                           <div class="w-100 mb-16  bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
                             <div class="h-48 w-full checker-bg flex items-center justify-start p-4 text-blue-500">
-                              <div class="w-32 h-32 bg-gray-100 rounded-full bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/774731/pexels-photo-774731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                              <div class="w-32 h-32 bg-gray-100 rounded-full bg-cover bg-center" style="background-image: url('{{ asset('storage/teams/' . $team->filename) }}');">
                               </div>
                               <div class="p-4">
                                 <p>{{$team->information}}</p>
