@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="flex justify-center md:justify-end" >
-            <button onclick="location.href='{{ route('article.create',$article->id) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-full">
+            <button onclick="location.href='{{ route('article.create',$team) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-4 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
@@ -110,7 +110,9 @@
 
 
                         
-
+                        @isset($articles)
+                            
+                       
                           @foreach($articles as $article)
                           
                             <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
@@ -152,6 +154,7 @@
                                 </div>
                               </div>
             @endforeach
+            @endisset
             
             
 

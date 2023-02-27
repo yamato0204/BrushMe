@@ -23,10 +23,14 @@ class ArticleController extends Controller
         $articles=Article::whereTeam_id($team)->get();
 
         $article=Article::whereTeam_id($team)->first();
+
+        if(!isset($article)){
+            return view('article.article', compact('team'));
+        }
     
        
         
-        return view('article.article', compact('articles','article'));
+        return view('article.article', compact('articles','team'));
         
     }
 
@@ -39,9 +43,11 @@ class ArticleController extends Controller
     {
         //記事投稿画面表示
         $team=Team::findOrFail($id)->id;
-        $article=Article::whereTeam_id($team)->first();
        
-        return view('article.create',compact('article'));
+
+       
+       
+        return view('article.create',compact('team'));
         
     }
 
