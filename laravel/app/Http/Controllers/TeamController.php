@@ -47,10 +47,25 @@ class TeamController extends Controller
     {
         //チーム作成　保存処理
         // バリデーションメッセージ
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'information' => ['required', 'string', 'max:1000'],
+            
+        ]);
+
+
         $imageFile = $request->image;
         if(!is_null($imageFile) && $imageFile->isValid() ){
           
             $fileNameToStore = ImageService::upload($imageFile, 'teams');
+               
+            Team::create([
+
+                'name' => $request->name,
+                'information' => $request->information,
+                'filename' => $fileNameToStore
+               ]);
+        
        }
 
        return redirect()->route('team');
