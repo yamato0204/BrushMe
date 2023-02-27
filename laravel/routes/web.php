@@ -30,7 +30,9 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name('home');
 
+
 Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name('team');
+
 
 Route::resource('/team',TeamController::class)
 ->middleware(['auth'])->except(['index']);
