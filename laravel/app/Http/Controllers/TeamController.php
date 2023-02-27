@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
+use InterventionImage;
+use App\Http\Requests\UploadImageRequest;
+use App\Services\ImageService;
 
 class TeamController extends Controller
 {
@@ -40,12 +43,14 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadImageRequest $request)
     {
         //チーム作成　保存処理
+        // バリデーションメッセージ
         $imageFile = $request->image;
         if(!is_null($imageFile) && $imageFile->isValid() ){
-            Storage::putFile('public/teams',$imageFile);
+          
+            $fileNameToStore = ImageService::upload($imageFile, 'teams');
        }
 
        return redirect()->route('team');
