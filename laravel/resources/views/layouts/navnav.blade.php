@@ -21,6 +21,11 @@
                             {{ __('Team') }}
                         </x-nav-link>
 
+                        <x-nav-link :href="route('edit')" :active="request()->routeIs('edit')" class="font-bold">
+                            {{ __('Edit') }}
+                        </x-nav-link>
+
+
                     
                     
                 </div>
