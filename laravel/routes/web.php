@@ -2,6 +2,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +30,11 @@ Route::get('/', function () {
 
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name('home');
+Route::get('/edit',[HomeController::class,'user'])->middleware(['auth'])->name('edit');
+
 
 Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name('team');
+
 
 Route::resource('/team',TeamController::class)
 ->middleware(['auth'])->except(['index']);
@@ -41,9 +45,18 @@ Route::prefix('/team')->
     middleware('auth')->group(function(){
 Route::get('/{team}/index', [ArticleController::class,'index'])->name('article.index');
 Route::get('/{team}/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.store');
 
 });
 
+Route::prefix('/user')->
+    middleware(['auth'])->group(function(){
+
+Route::get('{user}',[UserController::class, 'show'])->name('user.show');
+
+
+
+    });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

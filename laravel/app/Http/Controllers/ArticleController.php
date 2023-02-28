@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -57,11 +58,22 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $team=Team::findOrFail($id)->id;
         //記事　保存処理
         //参加条件ー＞記事投稿
         //記事投稿したら、userテーブルのflag +1
+
+
+        Article::create([
+
+            'body' => $request->body,
+            'team_id' => $team,
+            'user_id' => Auth::id()
+           ]);
+
+        return redirect()->route('article.index', ['team' => $team] );
     }
 
     /**

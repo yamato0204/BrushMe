@@ -16,16 +16,28 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-    
-        $teams = Team::all()->sortByDesc('created_at');
+        $keyword = $request->input('keyword');
 
-        return view('team.team',['teams' => $teams]);
+        $query = Team::query();
+
+        if(!empty($keyword)){
+            $query->where('name', 'LIKE', "%{$keyword}%")
+            ->orWhere('information', 'LIKE' , "%{$keyword}%");
+        }
+
+        $teams = $query->latest()->get();
+
+        return view('team.team',compact('teams','keyword'));
+
+
+    
         //
     }
 
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -115,4 +127,7 @@ class TeamController extends Controller
     {
         //
     }
+
+
+
 }
