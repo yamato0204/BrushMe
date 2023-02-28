@@ -28,7 +28,7 @@ class TeamController extends Controller
             ->orWhere('information', 'LIKE' , "%{$keyword}%");
         }
 
-        $teams = $query->get();
+        $teams = $query->latest()->get();
 
         return view('team.team',compact('teams','keyword'));
 
