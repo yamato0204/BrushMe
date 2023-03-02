@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -11,6 +14,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         //
@@ -57,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        
+       
     }
 
     /**
@@ -69,26 +73,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:50'],
-            'information' => ['required', 'string', 'max:1000'],
-            
-        ]);
+       
 
-        $imageFile = $request->image;
-        if(!is_null($imageFile) && $imageFile->isValid() ){
-            $fileNameToStore=ImageService::upload($imageFile, 'avatar'); 
-        }
 
-        $avatar = User::findOrFail($id);
-        $avatar->name = $request->name;
-        $avatar->information = $request->information;
-        $avatar->is_selling = $request->is_selling;
-        if(!is_null($imageFile) && $imageFile->isValid() ){
-            $avatar->filename = $fileNameToStore;
-        }
+        
 
-        $avatar->save();
     }
 
     /**
