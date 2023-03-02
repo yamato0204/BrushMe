@@ -52,7 +52,7 @@ Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.
 Route::prefix('/user')->
     middleware(['auth'])->group(function(){
 
-Route::get('{user}',[UserController::class, 'show'])->name('user.show');
+Route::get('/user',[UserController::class, 'show'])->name('user.show');
 
 
 

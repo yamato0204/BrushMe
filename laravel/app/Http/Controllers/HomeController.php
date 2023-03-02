@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function user(){
 
-        return view('user');
+        return view('user.edit');
     }
 
    
