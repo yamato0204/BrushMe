@@ -115,7 +115,7 @@
                        
                           @foreach($articles as $article)
                           
-                            <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
+                            <div class="w-full mb-8 bg-white shadow rounded border border-transparent ">
                                 <div class="h-18 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
                                   <a href="{{ route('user.show', ['name' => $article->user->name]) }}">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
@@ -139,8 +139,11 @@
 
                                       <div id="app"> 
                                         <article-like
-                                        :initial-is-liked-by={{Illuminate\Support\Js::from($article->isLikedBy(Auth::user()))}}      
-                                        :initial-count-likes={{Illuminate\Support\Js::from($article->count_likes)}}
+                                        :initial-is-liked-by = {{Illuminate\Support\Js::from($article->isLikedBy(Auth::user()))}}      
+                                        :initial-count-likes = {{Illuminate\Support\Js::from($article->count_likes)}}
+
+                                        :authorized = {{Illuminate\Support\Js::from(Auth::check())}}
+                                        endpoint = "{{ route('article.like', ['article'=>$article]) }}"
                                       >
                                       </article-like>    
                                     </div>
