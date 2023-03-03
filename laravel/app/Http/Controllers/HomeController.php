@@ -3,20 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
 /**
  * ホーム画面表示
+ * 
+ * 
  */
+
+ public function __construct()
+ {
+     $this->middleware(function ($request, $next) {
+
+         
+         $id = $request->route()->originalParameters();
+         $id = $id['user'] ?? null;
+         
+     
+         //$article_userId=$request->user()->id;
+          //articleのid取得
+         if(!is_null($id)){
+             
+             $UserId = (int)$id;
+             $userId = Auth::id(); //userテーブルのid
+             if($UserId !== $userId){
+                 abort(404);
+             }
+        } 
+
+         return $next($request);
+     });
+ }
+
+
+
     public function index(){
 
         return view('home');
     }
 
-    public function user(){
+    public function edit(){
+        $user_id = Auth::id();
+        
 
-        return view('user');
+        return view('user.edit',compact('user_id'));
+    }
+
+
+    public function update($id){
+        return view('testtest',compact('id'));
+
     }
 
    

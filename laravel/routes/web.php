@@ -30,8 +30,8 @@ Route::get('/', function () {
 
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name('home');
-Route::get('/edit',[HomeController::class,'user'])->middleware(['auth'])->name('edit');
-
+Route::get('/edit',[HomeController::class,'edit'])->middleware(['auth'])->name('edit');
+Route::get('/{user}/update',[HomeController::class, 'update'])->middleware(['auth'])->name('user.update');
 
 Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name('team');
 
@@ -52,7 +52,7 @@ Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.
 Route::prefix('/user')->
     middleware(['auth'])->group(function(){
 
-Route::get('{user}',[UserController::class, 'show'])->name('user.show');
+Route::get('/{name}',[UserController::class, 'show'])->name('user.show');
 
 
 
