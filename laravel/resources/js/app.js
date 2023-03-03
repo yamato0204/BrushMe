@@ -4,7 +4,7 @@ require('alpinejs');
 
 //require('./bootstrap'); //==========この行を削除
 //==========ここから追加==========
-import './bootstrap'
+import '../css/app.css'
 import Vue from 'vue'
 import ArticleLike from './components/ArticleLike'
 

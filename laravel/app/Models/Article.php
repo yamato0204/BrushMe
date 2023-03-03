@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Like;
 
 class Article extends Model
 {
@@ -26,4 +27,24 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class,'likes')->withTimestamps();
+    }
+
+    public function isLikedBy(?User $user):bool
+    {
+        return $user
+        ? (bool)$this->likes->where('id',$user->id)->count()
+        :false;
+    }
+
+
+    public function getCountLikesAttribute():int
+    {
+        return $this->likes->count();
+    }
+
+    //ArticleVue <div> 必須
 }
