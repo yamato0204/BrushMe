@@ -58,6 +58,7 @@ Route::get('/{name}',[UserController::class, 'show'])->name('user.show');
 });
 
 
+
 Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(function(){
 
     Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
