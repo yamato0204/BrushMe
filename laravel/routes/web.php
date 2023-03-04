@@ -41,7 +41,7 @@ Route::resource('/team',TeamController::class)
 
 //Route::get('/article',[ArticleController::class,'index'])->middleware(['auth'])->name('article');
 
-Route::prefix('/team')->
+Route::prefix('/teams')->
     middleware('auth')->group(function(){
 Route::get('/{team}/index', [ArticleController::class,'index'])->name('article.index');
 Route::get('/{team}/create', [ArticleController::class, 'create'])->name('article.create');
@@ -49,14 +49,21 @@ Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.
 
 });
 
-Route::prefix('/user')->
+Route::prefix('/users')->
     middleware(['auth'])->group(function(){
 
 Route::get('/{name}',[UserController::class, 'show'])->name('user.show');
 
 
+});
 
-    });
+
+Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(function(){
+
+    Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
+    Route::delete('/{article}/like',[ArticleController::class, 'unlike'])->name('unlike');
+
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

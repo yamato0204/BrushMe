@@ -1,6 +1,7 @@
 //require('./bootstrap');
 
 require('alpinejs');
+window.axios = require('axios');
 
 //require('./bootstrap'); //==========この行を削除
 //==========ここから追加==========
