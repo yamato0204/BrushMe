@@ -4048,7 +4048,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       isLikedBy: this.initialIsLikedBy,
-      countLikes: this.initialCountLikes
+      countLikes: this.initialCountLikes,
+      gotToLike: false
     };
   },
   methods: {
@@ -4072,7 +4073,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               response = _context.sent;
               _this.isLikedBy = true;
               _this.countLikes = response.data.countLikes;
-            case 5:
+              _this.gotToLike = true;
+              setTimeout(function () {
+                _this.gotToLike = false;
+              }, 2500);
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -4092,7 +4097,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               response = _context2.sent;
               _this2.isLikedBy = false;
               _this2.countLikes = response.data.countLikes;
-            case 5:
+              _this2.gotToLike = false;
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -4126,7 +4132,8 @@ var render = function render() {
   }, [_c("svg", {
     staticClass: "w-6 h-6",
     "class": {
-      "fill-current text-red-400": this.isLikedBy
+      "fill-current text-red-400": this.isLikedBy,
+      "animate-bounce": this.gotToLike
     },
     attrs: {
       xmlns: "http://www.w3.org/2000/svg",
