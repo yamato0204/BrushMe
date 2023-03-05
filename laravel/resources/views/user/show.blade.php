@@ -56,9 +56,12 @@
                   <div class="h-16 flex items-center justify-between">
                     <div class="flex items-start justify-start ">
 
-                        <div>フォロー</div>
+                        <div class="font-bold">
+                        {{ $user->count_followings }}  フォロー
+                        </div>
 
-                        <div>フォロワー</div>
+                        <div class="ml-4 font-bold ">
+                        {{ $user->count_followers}} フォロワー</div>
                         
                           
 
@@ -71,6 +74,11 @@
                 
                 </div>
               </div>
+
+
+
+
+
           </div>
           <div class="mt-44 lg:w-1/2 md:w-2/3 mx-auto">
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
