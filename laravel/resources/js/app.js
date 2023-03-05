@@ -8,11 +8,13 @@ window.axios = require('axios');
 import '../css/app.css'
 import Vue from 'vue'
 import ArticleLike from './components/ArticleLike'
+import FollowButton from './components/FollowButton'
 
 const app = new Vue({
   el: '#app',
   components: {
     ArticleLike,
+    FollowButton,
   }
 })
 //==========ここまで追加==========
