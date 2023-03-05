@@ -37,7 +37,9 @@
               @if( Auth::id() !== $user->id )
               <div id="app" class="w-2/3"> 
               <follow-button
-              :initial-is-followed-by = {{Illuminate\Support\Js::from($user->isFollowedBy(Auth::user()))}}   
+              :initial-is-followed-by = {{Illuminate\Support\Js::from($user->isFollowedBy(Auth::user()))}}  
+              :authorized =  {{Illuminate\Support\Js::from(Auth::check())}}
+              endpoint = "{{ route('user.follow',['name'=>$user->name]) }}"
               >
               </follow-button>
               </div>
