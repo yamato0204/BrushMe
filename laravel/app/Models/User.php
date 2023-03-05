@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -42,9 +43,21 @@ class User extends Authenticatable
     ];
 
 
-    public function teams(){
-
+    public function teams()
+    {
         return $this->belongsToMany(Team::class);
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class,'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    public function isFollowedBy(?User $user):bool
+    {
+        return $user
+            ?(bool)$this->followers->where('id',$user->id)->count()
+            :false;
     }
 
 

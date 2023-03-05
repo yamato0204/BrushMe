@@ -36,8 +36,9 @@
               
               @if( Auth::id() !== $user->id )
               <div id="app" class="w-2/3"> 
-              <follow-button>
-
+              <follow-button
+              :initial-is-followed-by = {{Illuminate\Support\Js::from($user->isFollowedBy(Auth::user()))}}   
+              >
               </follow-button>
               </div>
             @endif
