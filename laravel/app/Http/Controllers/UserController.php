@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Support\Facades\Auth;
@@ -50,8 +51,13 @@ class UserController extends Controller
     public function show(string $name)
     {
         $user = User::where('name', $name)->first();
+        $user_id=$user->id;
+        $teams = Team::find($user_id)->get();
+        $res=response()->json($teams);
+
+       
         
-        return view('user.show',['user'=>$user]);
+        return view('user.show',compact('user','res'));
     }
 
     /**
