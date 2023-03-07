@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
@@ -37,6 +38,27 @@ class TeamController extends Controller
         //
     }
 
+
+    public function article($id)
+    {
+        #チーム別の記事一覧を表示
+        #チームのid（team_id）を取得
+        $team=Team::findOrFail($id)->id;
+    
+    //チームidが１の時のarticle
+        $articles=Article::whereTeam_id($team)->get();
+
+        $article=Article::whereTeam_id($team)->first();
+
+        if(!isset($article)){
+            return view('article.article', compact('team'));
+        }
+    
+       
+        
+        return view('article.article', compact('articles','team'));
+        
+    }
    
     /**
      * Show the form for creating a new resource.

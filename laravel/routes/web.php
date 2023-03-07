@@ -43,7 +43,7 @@ Route::resource('/team',TeamController::class)
 
 Route::prefix('/teams')->
     middleware('auth')->group(function(){
-Route::get('/{team}/index', [ArticleController::class,'index'])->name('article.index');
+Route::get('/{team}/index', [TeamController::class,'article'])->name('article.index');
 Route::get('/{team}/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.store');
 
