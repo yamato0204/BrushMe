@@ -10,6 +10,7 @@ import Vue from 'vue'
 import ArticleLike from './components/ArticleLike'
 import FollowButton from './components/FollowButton'
 import TabMenu from './components/TabMenu'
+import ModalWindow from './components/ModalWindow'
 
 const app = new Vue({
   el: '#app',
@@ -17,6 +18,7 @@ const app = new Vue({
     ArticleLike,
     FollowButton,
     TabMenu,
+    ModalWindow,
   }
 })
 //==========ここまで追加==========
