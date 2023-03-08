@@ -43,7 +43,7 @@ class HomeController extends Controller
     public function index(){
 
         $teams=UserTeamService::GetUserTeam();
-        return view('home', compact('teams'));
+        return  view('home', compact('teams'));
     }
 
     public function edit(){

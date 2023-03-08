@@ -19,6 +19,7 @@ class CreateTeamUsersTable extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Team::class)->constrained();
+            $table->boolean('is_member')->default(false);
             $table->timestamps();
         });
     }
