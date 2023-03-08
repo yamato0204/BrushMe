@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div id="app">
+          <div id="app1">
           <modal-window>
           </modal-window>
         </div>

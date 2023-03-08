@@ -4216,15 +4216,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    modalWindow: {
+    initialIsMemberBy: {
       type: Boolean,
       "default": false
     }
   },
   data: function data() {
     return {
-      isShow: this.modalWindow
+      isMemberBy: this.initialIsMemberBy
     };
+  },
+  computed: {
+    buttonText: function buttonText() {
+      return this.isMemberBy ? '退会する' : '参加する';
+    }
   }
 });
 
@@ -4401,7 +4406,7 @@ var render = function render() {
         _vm.isShow = !_vm.isShow;
       }
     }
-  }, [_vm._v("\n        参加する\n      ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n        " + _vm._s(_vm.buttonText) + "\n      ")]), _vm._v(" "), _c("div", {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -4409,11 +4414,15 @@ var render = function render() {
       expression: "isShow"
     }]
   }, [_c("div", {
-    staticClass: "fixed table h-full w-full z-0 top-0 left-0 bg-gray-800"
+    staticClass: "absolute top-0 left-0 w-screen h-screen"
   }, [_c("div", {
-    staticClass: "table-cell align-middle"
+    staticClass: "absolute w-full h-full bg-black opacity-80"
   }, [_c("div", {
-    staticClass: "w-1/2 h-1/2 mx-16 my-16 bg-white z-2"
+    staticClass: "relative w-5/6 max-w-xl h-1/2 m-auto grid bg-gray-300 border rounded-md shadow",
+    staticStyle: {
+      top: "20vh",
+      "grid-template-rows": "4rem 1fr 6rem"
+    }
   }, [_vm._t("header", function () {
     return [_vm._v("\n            チームに参加で記事を投稿できます。参加しますか？\n         ")];
   }), _vm._v(" "), _c("button", {
@@ -4422,7 +4431,9 @@ var render = function render() {
         _vm.isShow = !_vm.isShow;
       }
     }
-  }, [_vm._v("閉じる")])], 2)])])])]);
+  }, [_vm._v("閉じる")]), _vm._v(" "), _c("button", {
+    staticClass: "bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4 rounded-full"
+  }, [_vm._v("\n        参加する\n      ")])], 2)])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -4573,7 +4584,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
   components: {
     ArticleLike: _components_ArticleLike__WEBPACK_IMPORTED_MODULE_1__["default"],
     FollowButton: _components_FollowButton__WEBPACK_IMPORTED_MODULE_2__["default"],
-    TabMenu: _components_TabMenu__WEBPACK_IMPORTED_MODULE_3__["default"],
+    TabMenu: _components_TabMenu__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }
+});
+var app1 = new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
+  el: '#app1',
+  components: {
     ModalWindow: _components_ModalWindow__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 });

@@ -18,7 +18,6 @@ class CreateTeamsTable extends Migration
             $table->string('name');
             $table->text('information');
             $table->string('filename');
-            $table->boolean('is_member')->default(false);
             $table->timestamps();
             
         });

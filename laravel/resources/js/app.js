@@ -18,7 +18,16 @@ const app = new Vue({
     ArticleLike,
     FollowButton,
     TabMenu,
+ 
+  }
+})
+
+const app1 = new Vue({
+
+  el: '#app1',
+  components:{
     ModalWindow,
+
   }
 })
 //==========ここまで追加==========
