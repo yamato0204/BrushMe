@@ -3,7 +3,7 @@
 
     <div>
    
-        <button @click="isShow = !isShow" class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4  rounded-full">
+        <button @click=" isShow= !isShow" class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4  rounded-full">
             {{ buttonText }}
           </button>
 
@@ -18,10 +18,11 @@
              <slot name="header">
                 チームに参加で記事を投稿できます。参加しますか？
              </slot>
-             <button @click="isShow = !isShow">閉じる</button>
+             <button @click="clickShow()">閉じる</button>
 
-             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4  rounded-full">
-            参加する
+             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-8 py-2 px-4  rounded-full"
+             @click="clickJoin(); clickShow();">
+            {{ buttonText }}
           </button>
           </div>
         </div>
@@ -57,13 +58,16 @@
         type: Boolean,
         default: false,
             
-        }
+        },
+        endpoint:{
+        type:String,
+    },
     },
     
     data(){
         return {
             isMemberBy:this.initialIsMemberBy,
-           
+            isShow: false,
            
            
         }
@@ -75,11 +79,32 @@
                 ?'退会する'
                 :'参加する'
         }
-    }
+    },
+
+    methods:{
+        clickJoin(){
+            this.isMemberBy
+            ? this.exit()
+            : this.join()
+        },
+        async join(){
+            const response = await axios.put(this.endpoint)
+
+            this.isMemberBy = true 
+        },
+        async exit(){
+            const response = await axios.delete(this.endpoint)
+
+            this.isMemberBy = false
+        },
+        clickShow(){
+            this.isShow = !this.isShow
+        }
     
     
-       
+}
     }
+    
     
     
    

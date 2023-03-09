@@ -46,7 +46,8 @@ Route::prefix('/teams')->
 Route::get('/{team}/index', [TeamController::class,'article'])->name('article.index');
 Route::get('/{team}/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/{team}/store',[ArticleController::class, 'store'])->name('article.store');
-
+Route::put('/{team}/join',[TeamController::class,'join'])->name('team.join');
+Route::delete('/{team}/join',[TeamController::class,'exit'])->name('team.exit');
 });
 
 Route::prefix('/users')->
