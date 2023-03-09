@@ -28,14 +28,22 @@ class Team extends Model
 
 
     public function users(){
-        return $this->belongsToMany(User::class,'team_user');
+        return $this->belongsToMany(User::class,'team_user')->withTimestamps();
     }
 
-    public function isJoin(?User $user):bool
+    public function isJoinBy(User $user)
     {
-        return $user
-            ?(bool)$this->users->where('id',$user->id)->count()
-            and (bool)$this->where('is_member', true)
-            :false;
+        
+            
+        $val = $this->users->where('id',$user->id) and DB::table('team_user')->where('is_member', true);
+       
+        if($val){
+            return true;
+        }  else{
+            return false;
+        }
+        //:initial-is-member-by = {{Illuminate\Support\Js::from($team->isJoin(Auth::user()))}} 
+           
     }
+    
 }

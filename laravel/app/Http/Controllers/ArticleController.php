@@ -14,7 +14,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
    
 
     /**
@@ -25,6 +25,7 @@ class ArticleController extends Controller
     public function create($id)
     {
         //記事投稿画面表示
+        
         $team=Team::findOrFail($id)->id;
        
 

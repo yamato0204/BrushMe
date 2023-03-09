@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
 use App\Services\ImageService;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
@@ -43,12 +44,14 @@ class TeamController extends Controller
     {
         #チーム別の記事一覧を表示
         #チームのid（team_id）を取得
-        $team=Team::findOrFail($id)->id;
+        $team = Team::findOrFail($id);
+        $team_id=$team->id;
+
     
     //チームidが１の時のarticle
-        $articles=Article::whereTeam_id($team)->get();
+        $articles=Article::whereTeam_id($team_id)->get();
 
-        $article=Article::whereTeam_id($team)->first();
+        $article=Article::whereTeam_id($team_id)->first();
 
         if(!isset($article)){
             return view('article.article', compact('team'));
@@ -68,6 +71,8 @@ class TeamController extends Controller
     public function create()
     {
         //チーム作成画面表示
+       
+       
         return view('team.create');
     }
 
@@ -111,6 +116,42 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public static function join(Request $request ,Team $team)
+    {
+        //Teamモデルに処理をかく
+       
+        $is_member= ['is_member' => true]; 
+        
+        $team->users()->attach($request->user()->id, $is_member);
+        //または 
+        
+        return [
+            'is_member' => true,
+        ];
+    }
+
+    public function exit(Request $request, Team $team)
+    {
+
+        $is_member= ['is_member' => false];
+
+        
+
+       $team->users()->detach($request->user()->id,$is_member);
+
+        return[
+            'is_member' => false,
+        ];
+    }
+
+
+
+
+
+
+
+
     public function show($id)
     {
         //
