@@ -137,12 +137,17 @@ class TeamController extends Controller
     public function exit(Request $request, Team $team)
     {
 
-        $is_member= ['is_member' => false];
+       // $is_member= ['is_member' => false];
+       // $team=$team->users->where('user_id',$request->user()->id)->first();
+        //$team->isMember = false;
+        $is_false= ['is_member' => false]; 
 
+
+       $team->users()->syncWithPivotValues($request->user()->id, $is_false);
+       
         
 
-       $team->users()->detach($request->user()->id,$is_member);
-
+     
         return[
             'is_member' => false,
         ];
