@@ -30,8 +30,8 @@
           </div>
           <div id="app1">
         <modal-window
-        
-          endpoint = "{{ route('team.join',['team' => $team])}}">
+        :initial-is-member-by = {{Illuminate\Support\Js::from($team->isJoinBy(Auth::user()))}} 
+        endpoint = "{{ route('team.join',['team' => $team])}}">
           </modal-window> 
           
         </div>

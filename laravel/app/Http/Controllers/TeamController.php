@@ -121,9 +121,12 @@ class TeamController extends Controller
     {
         //Teamモデルに処理をかく
        
-        $is_member= ['is_member' => true]; 
-        
-        $team->users()->attach($request->user()->id, $is_member);
+        $is_true= ['is_member' => true]; 
+
+        $is_false= ['is_member' => false]; 
+
+        $team->users()->detach($request->user()->id,$is_false);
+        $team->users()->attach($request->user()->id, $is_true);
         //または 
         
         return [

@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class ArticleController extends Controller
 {
@@ -26,12 +28,58 @@ class ArticleController extends Controller
     {
         //記事投稿画面表示
         
+        $user_id=Auth::id();
+
         $team=Team::findOrFail($id)->id;
+        /*
+        $team=Team::find(1);
+
+
+       $val= $team->isMember($user_id)
+            ->first()->pivot->is_member;
+
+        if($val){
+            return view('article.create',compact('team'));
+        }else{
+            return abort('404', 'チームに参加ボタンを押してください' );
+
+        }
+       */
+
+
+       (bool)$val = DB::table('team_user')->where('user_id',$user_id)
+       ->where('team_id', $team)
+       ->first();
+    
+    if(isset($val)){
+        return view('article.create',compact('team'));
+    }else{
+        return abort('404' , 'Cannot follow yourself');
+    }
+
+
+     //  $a = $team->isMember;
+
+   
+
+
+
+
+
+    
+       
+
+    
+        
+
+
+
+
        
 
        
        
-        return view('article.create',compact('team'));
+      //  return view('article.create',compact('team'));
         
     }
 

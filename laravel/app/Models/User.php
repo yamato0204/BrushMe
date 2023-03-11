@@ -48,6 +48,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class,'team_user');
     }
 
+    public function isMember(){
+        return $this->belongsToMany(Team::class,'team_user')
+        ->as('is_member')
+        ->withPivot('is_member');
+    }
+
+
     public function followers()
     {
         return $this->belongsToMany(User::class,'follows', 'followee_id', 'follower_id')->withTimestamps();

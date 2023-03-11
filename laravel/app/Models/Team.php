@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Team extends Model
 {
@@ -22,7 +23,6 @@ class Team extends Model
 
     public function isMember(){
         return $this->belongsToMany(User::class,'team_user')
-        ->as('is_member')
         ->withPivot('is_member');
     }
 
@@ -35,9 +35,10 @@ class Team extends Model
     {
         
             
-        $val = $this->users->where('id',$user->id) and DB::table('team_user')->where('is_member', true);
-       
-        if($val){
+       // $val = DB::table('team_user')->where('is_member', true);
+        //$this->users->where('id',$user->id) and DB::table('team_user')->where('is_member', true);
+        (bool)$val = DB::table('team_user')->where('is_member', true)->first();
+        if((bool)$val){
             return true;
         }  else{
             return false;
