@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Services\UserTeamService;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use InterventionImage;
+use App\Http\Requests\UploadImageRequest;
+use App\Services\ImageService;
+
 
 class HomeController extends Controller
 {
@@ -54,8 +60,34 @@ class HomeController extends Controller
     }
 
 
-    public function update($id){
-        return view('testtest',compact('id'));
+    public function update(UploadImageRequest $request, $id ){
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'self_introduction' => ['required', 'string', 'max:1000'],
+            
+        ]);
+
+
+        $imageFile = $request->image;
+        if(!is_null($imageFile) && $imageFile->isValid() ){
+          
+            $fileNameToStore = ImageService::upload($imageFile, 'avatars');
+        }
+               
+            $avatar = User::findOrFail($id);
+            $avatar->name = $request->name;
+            $avatar->self_introduction = $request->self_introduction;
+
+            if(!is_null($imageFile) && $imageFile->isValid() ){
+                $avatar->filename = $fileNameToStore;
+            }
+    
+            $avatar->save();
+      
+        
+       
+
+       return redirect()->route('home');
 
     }
 

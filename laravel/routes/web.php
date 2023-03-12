@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth'])->name('home');
 Route::get('/edit',[HomeController::class,'edit'])->middleware(['auth'])->name('edit');
-Route::get('/{user}/update',[HomeController::class, 'update'])->middleware(['auth'])->name('user.update');
+Route::post('/{user}/update',[HomeController::class, 'update'])->middleware(['auth'])->name('user.update');
 
 Route::get('/team',[TeamController::class,'index'])->middleware(['auth'])->name('team');
 
