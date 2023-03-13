@@ -56,8 +56,6 @@ class UserController extends Controller
 
         
 
-
-        dd($teams);
         $res=response()->json($teams);
 
        
