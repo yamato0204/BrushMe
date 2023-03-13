@@ -8,8 +8,13 @@ use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
+use App\Models\TeamUser;
 use App\Services\ImageService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Echo_;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\CssSelector\Node\ElementNode;
 
 class TeamController extends Controller
 {
@@ -32,7 +37,24 @@ class TeamController extends Controller
 
         $teams = $query->latest()->get();
 
-        return view('team.team',compact('teams','keyword'));
+
+
+
+        $ranks = Team::withCount(['teamUser','users' => function (Builder $query){
+            $query->where('is_member',1);
+         }])->orderBy('users_count','desc')->limit(5)->get();
+
+    //  foreach($teams as $team){
+    //    echo $team->name;
+    //  }
+
+
+
+
+
+
+
+        return view('team.team',compact('teams','keyword','ranks'));
 
 
     
@@ -71,8 +93,17 @@ class TeamController extends Controller
     public function create()
     {
         //チーム作成画面表示
+    
+
+
+
+
+
        
-       
+
+
+
+
         return view('team.create');
     }
 
@@ -143,7 +174,8 @@ class TeamController extends Controller
         $is_false= ['is_member' => false]; 
 
 
-       $team->users()->syncWithPivotValues($request->user()->id, $is_false);
+       $team->users()->syncWithPivotValues($request->user()->id, $is_false, false);
+       
        
         
 
@@ -155,6 +187,7 @@ class TeamController extends Controller
 
 
 
+   
 
 
 

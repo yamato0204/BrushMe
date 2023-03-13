@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -48,6 +49,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class,'team_user');
     }
 
+
+    public function teamUser(){
+        return $this->belongsToMany(Team::class)->using(TeamUser::class);
+    }
+
+
     public function isMember(){
         return $this->belongsToMany(Team::class,'team_user')
         ->as('is_member')
@@ -81,6 +88,16 @@ class User extends Authenticatable
     public function getCountFollowingsAttribute()
     {
         return $this->followings->count();
+    }
+
+    public function usersRanking()
+    {
+        $query = User::withCount(['teams' => function(Builder $query){
+            $query->where('is_member',true);
+        } ])->orderBy('teams_count','desc')->limit(5)->get();
+
+        return $query;
+
     }
 
 

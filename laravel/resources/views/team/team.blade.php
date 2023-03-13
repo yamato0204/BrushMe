@@ -40,31 +40,26 @@
                 <div class="bg-white p-4 lg:w-full sm:w-full w-full ">
                     <h2 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-sm text-center sm:text-left">人気ランキング</h2>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
+                      @foreach ($ranks as $index => $rank)
                       <a>
+                        @if($index + 1 == 1)
                         <span class="bg-yellow-400 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <h1>1</h1>
-                        </span>First Link
+                          @elseif($index + 1 == 2)
+                          <span class="bg-gray-300 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                          @elseif($index + 1 == 3) 
+                          <span class="bg-yellow-600 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                          @else
+                          <span class="bg-indigo-100 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+
+                          @endif
+                          <h1>{{$index + 1}}</h1>
+                        </span>
+                        {{ $rank->name }}
                       </a>
-                      <a>
-                        <span class="bg-gray-300 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <h2>2</h2>
-                        </span>Second Link
-                      </a>
-                      <a>
-                        <span class="bg-yellow-600 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <h2>3</h2>
-                        </span>Third Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <h2>4</h2>
-                        </span>Fourth Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-gray-800 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <h2>5</h2>
-                        </span>Fifth Link
-                      </a>
+                      @endforeach
+                      
+                      
+                      
                     </nav>
                   </div>
 

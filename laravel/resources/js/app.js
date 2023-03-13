@@ -27,6 +27,7 @@ const app1 = new Vue({
   el: '#app1',
   components:{
     ModalWindow,
+    TabMenu,
 
   }
 })
