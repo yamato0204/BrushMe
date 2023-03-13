@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Team;
+use App\Models\TeamUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,19 +30,29 @@ class ArticleController extends Controller
         //記事投稿画面表示
         
 
-/*
-        $user_id=Auth::id();
 
-        $team=Team::findOrFail($id)->id;
 
-*/
-       $team=Team::find(1);
+        $team_id=Team::findOrFail($id)->id;
 
-       
 
-       (bool)$val = $team->isMember()->where('user_id', Auth::id())
-       ->first()->getOriginal()['pivot_is_member'];
+       $team=TeamUser::where('user_id',Auth::id())->where('team_id',$team_id)->first();
+       $val=$team->is_member;
+
+       //本番
+      // (bool)$val = $team->isMember()->where('user_id', Auth::id())
+      // ->first()->getOriginal()['pivot_is_member'];
      
+
+     
+     
+
+
+
+
+
+
+
+
     
        
 /*
@@ -50,11 +61,17 @@ class ArticleController extends Controller
        ->where('team_id', $team)
        ->first();
     */
+
+
+
+
+    
     if($val){
         return view('article.create',compact('team'));
     }else{
         return abort('404' , 'Cannot follow yourself');
     }
+    
 
 
      

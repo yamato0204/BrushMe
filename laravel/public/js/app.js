@@ -4555,32 +4555,7 @@ var render = function render() {
       staticClass: "w-32 h-32 bg-gray-100 rounded-full bg-cover bg-center"
     }), _vm._v(" "), _c("div", {
       staticClass: "p-4"
-    }, [_c("p", [_vm._v(_vm._s(team.information))])])]), _vm._v(" "), _c("div", {
-      staticClass: "p-4 border-t border-gray-200"
-    }, [_c("div", {
-      staticClass: "flex items-center justify-between"
-    }, [_c("h1", {
-      staticClass: "text-gray-600 font-medium"
-    }, [_vm._v(_vm._s(team.name))]), _vm._v(" "), _c("button", {
-      staticClass: "text-gray-500 hover:text-gray-900"
-    }, [_c("svg", {
-      staticClass: "h-6 w-6",
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor"
-      }
-    }, [_c("path", {
-      attrs: {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-      }
-    })])])]), _vm._v(" "), _c("p", {
-      staticClass: "text-gray-400 text-sm my-1"
-    })])])]);
+    }, [_c("p", [_vm._v(_vm._s(team.information))])])])])]);
   }), 0), _vm._v(" "), _c("div", {
     directives: [{
       name: "show",
@@ -4650,7 +4625,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
 var app1 = new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
   el: '#app1',
   components: {
-    ModalWindow: _components_ModalWindow__WEBPACK_IMPORTED_MODULE_4__["default"]
+    ModalWindow: _components_ModalWindow__WEBPACK_IMPORTED_MODULE_4__["default"],
+    TabMenu: _components_TabMenu__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 });
 //==========ここまで追加==========
