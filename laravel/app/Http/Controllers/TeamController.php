@@ -81,15 +81,22 @@ class TeamController extends Controller
         }
 
 
-        $users = $team->teamUser()->where('is_member',true)->get();
 
-        
 
-       
-       
 
-    
-       
+        $users_count = $team->teamUser()->where('is_member',true)->count();
+
+        $users = $team->teamUser()->where('is_member',true)->limit(4)->get();
+
+
+        if($users_count > 4)
+        {
+            $count = $users_count - 4; 
+            return view('article.article', compact('articles','team','users','count'));
+
+        }
+
+       // limit(1)->get();
         
         return view('article.article', compact('articles','team','users'));
         
