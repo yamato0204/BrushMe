@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
 use App\Models\TeamUser;
+use App\Models\User;
 use App\Services\ImageService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
@@ -78,10 +79,19 @@ class TeamController extends Controller
         if(!isset($article)){
             return view('article.article', compact('team'));
         }
+
+
+        $users = $team->teamUser()->where('is_member',true)->get();
+
+        
+
+       
+       
+
     
        
         
-        return view('article.article', compact('articles','team'));
+        return view('article.article', compact('articles','team','users'));
         
     }
    
