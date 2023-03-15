@@ -131,7 +131,15 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+
+       $article =  Article::findOrFail($id);
+
+       
+
+       // $comment = $article->comment();
+
+        return view('article.show', compact('article'));
+        
     }
 
     /**

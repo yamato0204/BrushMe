@@ -33,9 +33,7 @@
                     <div>2/10 13:45</div>
                 
                   </div>
-                    </div>
-                  
-                           
+                    </div>       
                     <div class="p-4 border-t border-gray-200">
                       <div class="flex items-center justify-between">
                         <div class="flex items-start justify-start ">
@@ -60,11 +58,6 @@
                     
                     </div>
                   </div>
-
-
-
-
-
 
 
                 </div>
