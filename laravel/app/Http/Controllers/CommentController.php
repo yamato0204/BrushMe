@@ -3,23 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Team;
+use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
+
 
 class CommentController extends Controller
 {
-    public function store(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
+       
 
-        $team=Team::findOrFail($id)->id;
 
-        Article::create([
+       
+
+        Comment::create([
 
             'comment' => $request->comment,
-            'team_id' => $team,
+            'article_id' => $id,
             'user_id' => Auth::id()
            ]);
 
-        return redirect()->route('article.index', ['team' => $team] );
+        return redirect()->route('article.show', ['article' => $id] );
     }
 
     

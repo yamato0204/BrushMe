@@ -67,7 +67,7 @@ Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('user
 Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(function(){
 
     Route::get('/{article}/show',[ArticleController::class, 'show'])->name('show');
-    Route::put('/{article}/update',[CommentController::class, 'update'])->name('update');
+    Route::post('/{article}/update',[CommentController::class, 'update'])->name('update');
     Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
     Route::delete('/{article}/like',[ArticleController::class, 'unlike'])->name('unlike');
 
