@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -66,6 +67,7 @@ Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('user
 Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(function(){
 
     Route::get('/{article}/show',[ArticleController::class, 'show'])->name('show');
+    Route::post('/{article}/update',[CommentController::class, 'update'])->name('update');
     Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
     Route::delete('/{article}/like',[ArticleController::class, 'unlike'])->name('unlike');
 

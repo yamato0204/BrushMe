@@ -62,7 +62,8 @@
 
 
 
-
+      <form method="POST" action="{{ route('article.update' ,$article->id)}}" >
+      @csrf
       <div class="w-full mb-8 p-4 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
       <!--  <div class="h-24 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
@@ -76,10 +77,10 @@
 
         </div>      --> 
         
-        <textarea id="message" name="body" rows="4" 
+        <textarea id="message" name="comment" rows="4" 
         class="bg-gray-100 block container w-full mx-auto  w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
   
-        <button onclick="location.href=" class="m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button type="submit" class="m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             コメントする
           </button>
   
@@ -87,6 +88,7 @@
 
 
       </div>
+      
 
 
 
