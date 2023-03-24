@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Team;
+/*use App\Models\Team;
 use App\Models\User;
-use App\Models\Like;
+use App\Models\Like;*/
 
 class Article extends Model
 {
@@ -47,4 +47,9 @@ class Article extends Model
     }
 
     //ArticleVue <div> 必須
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -13,18 +13,16 @@
 
 
     <section class="text-gray-600 body-font">
-        <div class="container w-2/3 px-5 py-40 mx-auto ">
+        <div class="container w-full md:w-2/3 px-5 py-40 mx-auto ">
         <!--  <div class=" w-2/3 mb-10 lg:mb-0 rounded-lg overflow-hidden"> -->
 
 
 
     <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
-        <div class="h-36 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-    </svg>
-    <div class=" w-full flex justify-between">
-        <div>yamato</div>
+        <div class="h-36 w-full  checker-bg flex items-start justify-start p-4 text-blue-500">
+            <x-thumbnail :filename="$article->user->filename" type="avatars" />
+    <div class="ml-8 w-full flex justify-between">
+        <div>{{ $article->user->name }}</div>
         <div>2/10 13:45</div>
     
       </div>
@@ -88,6 +86,7 @@
 
 
       </div>
+      </form>
       
 
 
@@ -100,39 +99,35 @@
 
 
 
+      @foreach($comments as $comment )
 
       <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
-        <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
+        <div class="h-36 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
     </svg>
     <div class=" w-full flex justify-between">
-        <div>yamato</div>
+        <div>{{ $comment->user->name }}</div>
         <div>2/10 13:45</div>
+
+      
     
       </div>
+     
+      
         </div>       
-        
+        <div class="h-12 ml-8 mb-8 flex items-start justify-start">
+            <p>{{ $comment->comment }}</p>
+          </div>  
       </div>
 
+      @endforeach
 
 
 
 
-      <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
-        <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-    </svg>
-    <div class=" w-full flex justify-between">
-        <div>yamato</div>
-        <div>2/10 13:45</div>
-    
-      </div>
-        </div>       
-        
-      </div>
 
+     
 
 
 

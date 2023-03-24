@@ -25,7 +25,7 @@
           <div class="mt-44 lg:w-1/2 md:w-2/3 mx-auto">
             <!--<x-auth-validation-errors class="mb-4" :errors="$errors" /> -->
             
-            <form method="POST" action="{{ route('article.store',$team)}}" >
+            <form method="POST" action="{{ route('article.store',['team' => $team_id])}}" >
               @csrf
             <div class="-m-2">
               
@@ -50,7 +50,7 @@
              
               
               <div class="p-2 w-full flex justify-around mt-4">
-                <button type="button" onclick="location.href='{{ route('article.index',$team) }}'"class="bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                <button type="button" onclick="location.href='{{ route('article.index',['team' => $team_id]) }}'"class="bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
                 <button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">投稿する</button>
               </div>
               
