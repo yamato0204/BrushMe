@@ -24,7 +24,7 @@
 
            
     <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
-      <div class="h-36 w-full  checker-bg flex items-start justify-start p-4 text-blue-500">
+      <div class="h-36 w-full  checker-bg flex  justify-between p-4 text-blue-500">
                   
                      
                       <x-thumbnail :filename="$user->filename" type="avatars" />
@@ -33,11 +33,12 @@
             <div class="ml-8 w-full flex justify-between ">
                 <div>{{ $user->name }}</div>
                 
-              </div>
-      </div>
+             
+      
+      
               
               @if( Auth::id() !== $user->id )
-              <div id="app" class="w-2/3"> 
+              <div id="app" class="ml-8 w-36 lg:w-64"> 
               <follow-button
               :initial-is-followed-by = {{Illuminate\Support\Js::from($user->isFollowedBy(Auth::user()))}}  
               :authorized =  {{Illuminate\Support\Js::from(Auth::check())}}
@@ -46,6 +47,8 @@
               </follow-button>
               </div>
             @endif
+      </div>
+    </div>
               
                
                 <div>

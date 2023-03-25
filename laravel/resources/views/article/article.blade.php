@@ -4,7 +4,7 @@
     <div>
         <div class="flex -space-x-2">
           
-          <x-avatars :users="$users" />
+          <x-avatars :users="$users ?? ''" />
            
           @isset($count)
            <!-- <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">-->
@@ -122,9 +122,7 @@
                                
 
                                   <a href="{{ route('user.show', ['name' => $article->user->name]) }}">
-                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                            </svg>
+                                    <x-thumbnail :filename="$article->user->filename" type="avatars" />
                           </a>
                             <div class=" w-full flex justify-between">
                                 <div>{{ $article->user->name }}</div>

@@ -39,11 +39,7 @@ class ArticleController extends Controller
 
        $team=TeamUser::where('user_id',Auth::id())->where('team_id',$team_id)->first();
 
-       if(is_null($team)){
-        $val = false;
-       }else{
-        $val=$team->is_member;
-       }
+       $val = $team ? $team->is_member : false;
 
        
       
