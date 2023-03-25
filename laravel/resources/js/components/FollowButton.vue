@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full lg:w-2/3">
+    <div class="w-24">
 
         <button class=" w-full flex items-between  bg-transparent   font-semibold  py-1 px-2 border border-blue-500 rounded "
         :class="buttonColor"

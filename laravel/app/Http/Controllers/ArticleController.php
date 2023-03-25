@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Team;
 use App\Models\TeamUser;
+use CreateCommentsTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,23 +38,15 @@ class ArticleController extends Controller
 
 
        $team=TeamUser::where('user_id',Auth::id())->where('team_id',$team_id)->first();
-       $val=$team->is_member;
+
+       $val = $team ? $team->is_member : false;
+
+       
+      
 
        //本番
       // (bool)$val = $team->isMember()->where('user_id', Auth::id())
       // ->first()->getOriginal()['pivot_is_member'];
-     
-
-     
-     
-
-
-
-
-
-
-
-
     
        
 /*
@@ -62,12 +56,9 @@ class ArticleController extends Controller
        ->first();
     */
 
-
-
-
     
     if($val){
-        return view('article.create',compact('team'));
+        return view('article.create',compact('team_id'));
     }else{
         return abort('404' , 'Cannot follow yourself');
     }
@@ -131,14 +122,27 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+    
+    $article=Article::findOrFail($id);
+       
 
-       $article =  Article::findOrFail($id);
+       $comments = $article->comments()
+       ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
+       
+
+       /*
+       $user = User::where('name', $name)->first();
+       $user_id=$user->id;
+       $teams= $user->teamUser()->where('is_member',true)->get();
+*/
+       
        
 
        // $comment = $article->comment();
 
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article','comments'));
         
     }
 

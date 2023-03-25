@@ -14,7 +14,7 @@ if ($type === 'teams') {
       </svg>
     @else
     
-    <img class="rounded-full w-24 h-24 flex items-center justify-center" src="{{ asset($path . $filename)}}">
+    <img class="rounded-full w-24 h-20 flex items-center justify-center" src="{{ asset($path . $filename)}}">
    
     @endif
 

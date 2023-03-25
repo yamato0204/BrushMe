@@ -18,24 +18,27 @@
 
 
     <section class=" text-gray-600 body-font">
-        <div class=" container px-5 mx-auto">
-          <div class="flex flex-col text-center items-center w-full mb-12">
+        <div class="container w-full md:w-2/3 px-5 py-40 mx-auto ">
+          
            
 
-            <div class="mt-40 w-full md:w-2/3   mb-8 bg-white shadow rounded border border-transparent  ">
-                <div class="h-18 w-full checker-bg flex  justify-between p-4 text-blue-500">
-                    <a class="w-1/2" href="{{ route('user.show', ['name' => $user->name]) }}">
+           
+    <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
+      <div class="h-36 w-full  checker-bg flex  justify-between p-4 text-blue-500">
+                  
                      
                       <x-thumbnail :filename="$user->filename" type="avatars" />
                      
-        </a>        
-            <div class="w-full flex justify-between mr-32">
+     
+            <div class="ml-8 w-full flex justify-between ">
                 <div>{{ $user->name }}</div>
                 
-              </div>
+             
+      
+      
               
               @if( Auth::id() !== $user->id )
-              <div id="app" class="w-2/3"> 
+              <div id="app" class="ml-8 w-36 lg:w-64"> 
               <follow-button
               :initial-is-followed-by = {{Illuminate\Support\Js::from($user->isFollowedBy(Auth::user()))}}  
               :authorized =  {{Illuminate\Support\Js::from(Auth::check())}}
@@ -44,8 +47,10 @@
               </follow-button>
               </div>
             @endif
+      </div>
+    </div>
               
-                </div>
+               
                 <div>
                  
 
@@ -72,14 +77,14 @@
                   </div>
                 
                 </div>
-              </div>
+       
 
 
 
+    </div>
 
-
-          </div>
-          <div class="mt-22 lg:w-1/2 md:w-2/3 mx-auto">
+        
+          <div>
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
             
 
@@ -104,12 +109,12 @@
          
 
 
+          </div>
+
+         
 
 
-
-
-
-
+         
 
         </div>
       </section>

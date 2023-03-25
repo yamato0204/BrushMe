@@ -76,18 +76,11 @@ class TeamController extends Controller
 
         $article=Article::whereTeam_id($team_id)->first();
 
-        if(!isset($article)){
-            return view('article.article', compact('team'));
-        }
-
-
-
-
-
         $users_count = $team->teamUser()->where('is_member',true)->count();
 
         $users = $team->teamUser()->where('is_member',true)->limit(4)->get();
-
+       
+        
 
         if($users_count > 4)
         {
@@ -96,10 +89,14 @@ class TeamController extends Controller
 
         }
 
+        if(!isset($article) && $users_count > 4){
+            return view('article.article', compact('team','users','count'));
+        }
+
        // limit(1)->get();
         
         return view('article.article', compact('articles','team','users'));
-        
+       
     }
    
     /**
