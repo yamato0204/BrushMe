@@ -48,8 +48,11 @@ class HomeController extends Controller
 
     public function index(){
 
-        $teams=UserTeamService::GetUserTeam();
-        return  view('home', compact('teams'));
+        $user = User::where('id', Auth::id())->first();
+        $user_id=$user->id;
+        $teams= $user->teamUser()->where('is_member',true)->get();
+
+        return  view('home', compact('teams','user'));
     }
 
     public function edit(){
