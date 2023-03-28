@@ -197,7 +197,19 @@
                                 <div class="py-1" role="none">
                                   <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">記事を更新する</a>
                                   <div class="border-t border-gray-100"></div>
-                                  <a href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-toggle="modal" data-target="#modal-delete-{{ $article->id }}">記事を削除する</a>
+
+                                  <form id="delete_{{$article->id}}" method="POST" action="">
+                                    @csrf
+                                    @method('delete')
+                                  <td class="md:px-4 py-3">
+                                    <a href="#" data-id="{{ $article->id }}" onclick="deletePost(this)"  class="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 hover:text-gray-900">記事を削除する</a>
+                                  </td>
+                                  </form>
+                                  
+
+
+
+                                  
                                 </div>
                               </div>
                             </div>
@@ -212,6 +224,18 @@
                                 optionsMenuItems{{ $uniqueId ?? '' }}.classList.toggle('hidden');
                               });
                             </script>
+
+<script>
+  function deletePost(e) {
+    'use strict';
+    if(confirm('本当に削除してもいいですか？')){
+      document.getElementById('delete_' + e.dataset.id).submit();
+    }
+  }
+</script>
+
+
+
                             
 
 
