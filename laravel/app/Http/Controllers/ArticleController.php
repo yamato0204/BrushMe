@@ -20,6 +20,11 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
+
+
+     
    
 
     /**
@@ -152,9 +157,40 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $article_id) //article id
     {
-        //
+
+
+
+        $id = $request->route()->originalParameters();
+        
+        $id = $id['article'] ?? null;
+        
+        
+   
+        //$article_userId=$request->user()->id;
+         //articleのid取得
+        if(!is_null($id)){
+
+           $article = Article::find($id);
+           $user_id = $article->user_id;
+           
+            $userId = Auth::id(); //userテーブルのid
+            
+            if($user_id !== $userId){
+                abort(404);
+            }
+       } 
+
+
+       $article=Article::findOrFail($article_id);
+       
+
+        $team_id = $article->team()->first()->id;
+        
+        
+        
+        return view('article.edit',compact('team_id','article'));
     }
 
     /**
@@ -182,7 +218,7 @@ class ArticleController extends Controller
 
     public function like(Request $request, Article $article)
     {
-        $article->likes()->detach($request->id);
+        $article->likes()->detach($request->user()->id);
         $article->likes()->attach($request->user()->id);
 
         return [
