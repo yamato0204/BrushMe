@@ -71,6 +71,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class,'follows', 'follower_id', 'followee_id')->withTimestamps();
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Article::class, 'likes')->withTimestamps();
+    }
    
 
     public function isFollowedBy(?User $user):bool

@@ -28,6 +28,12 @@ class Team extends Model
     }
 */
 
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+
+
     public function users(){
         return $this->belongsToMany(User::class,'team_user')->withTimestamps();
     }

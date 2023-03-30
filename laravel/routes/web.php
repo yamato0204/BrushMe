@@ -68,6 +68,7 @@ Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(functi
 
     Route::get('/{article}/show',[ArticleController::class, 'show'])->name('show');
     Route::post('/{article}/update',[CommentController::class, 'update'])->name('update');
+    Route::get('/{article}/edit',[ArticleController::class, 'edit'])->name('edit');
     Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
     Route::delete('/{article}/like',[ArticleController::class, 'unlike'])->name('unlike');
 

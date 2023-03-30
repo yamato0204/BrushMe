@@ -4398,7 +4398,7 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "w-full lg:w-2/3"
+    staticClass: "w-24"
   }, [_c("button", {
     staticClass: "w-full flex items-between bg-transparent font-semibold py-1 px-2 border border-blue-500 rounded",
     "class": _vm.buttonColor,

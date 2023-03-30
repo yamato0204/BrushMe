@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header" class="bg-fixed">
+      
       <div class="flex justify-between ">
     <div>
         <div class="flex -space-x-2">
@@ -15,13 +16,14 @@
           </a>
           @endisset
           </div>
-          <div id="app1">
+         <div id="app1">
         <modal-window
         :initial-is-member-by = {{Illuminate\Support\Js::from($team->isJoinBy($team))}} 
         endpoint = "{{ route('team.join',['team' => $team])}}">
           </modal-window> 
-          
         </div>
+          
+       
         </div>
           <div class="flex justify-center md:justify-end" >
             <button onclick="location.href='{{ route('article.create',$team->id) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full">
@@ -101,12 +103,14 @@
 
 
 
+                  <div id="app">
                     <section class="w-full text-gray-600 body-font">
                       <div class="w-full"> 
 
 
                         
                         @isset($articles)
+                        
                             
                        
                           @foreach($articles as $article)
@@ -139,7 +143,7 @@
                                   <div class="flex items-center justify-between">
                                     <div class="flex items-start justify-start ">
 
-                                      <div id="app"> 
+                                      
                                         <article-like
                                         :initial-is-liked-by = {{Illuminate\Support\Js::from($article->isLikedBy(Auth::user()))}}      
                                         :initial-count-likes = {{Illuminate\Support\Js::from($article->count_likes)}}
@@ -147,8 +151,10 @@
                                         :authorized = {{Illuminate\Support\Js::from(Auth::check())}}
                                         endpoint = "{{ route('article.like', ['article'=>$article]) }}"
                                       >
-                                      </article-like>    
-                                    </div>
+                                      </article-like> 
+                                   
+                                  
+                                   
 
                                     <a href="{{ route('article.show', ['article' => $article->id ])}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-8 w-6 h-6 ">
@@ -160,12 +166,51 @@
                                     
 
                                     </div>
-                                      
-                                    <button class="text-gray-500 hover:text-gray-900">
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                            </svg>
-                                    </button>
+                                    @if(Auth::id() === $article->user_id)
+                                
+                              @php
+                              // ユニークなIDを生成
+                              $uniqueId = uniqid('optionsMenu');
+                            @endphp
+                            
+                            <div class="ml-auto card-text relative">
+                              <button type="button" class="inline-flex items-center justify-center text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-inset" id="optionsMenu{{ $uniqueId ?? '' }}" aria-expanded="false" aria-haspopup="true">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18" />
+                                </svg>
+                              </button>
+                              <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" id="options-menu-items-{{ $uniqueId ?? '' }}" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <div class="py-1" role="none">
+                                  <a href="{{route('article.edit',['article' => $article->id ])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">記事を更新する</a>
+                                  <div class="border-t border-gray-100"></div>
+
+                                  <form id="delete_{{$article->id}}" method="POST" action="">
+                                    @csrf
+                                    @method('delete')
+                                  <td class="md:px-4 py-3">
+                                    <a href="#" data-id="{{ $article->id }}" onclick="deletePost(this)"  class="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 hover:text-gray-900">記事を削除する</a>
+                                  </td>
+                                  </form>
+
+
+                                  
+                              
+
+
+
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            
+                           
+
+
+
+
+
+
+                                    @endif
                                   </div>
                                 
                                 </div>
@@ -180,6 +225,8 @@
                            
                            
             @endforeach
+                         
+                         
             @endisset
             
             
@@ -217,6 +264,32 @@
 
                         </div>
                       </section>
+                    </div>
+
+
+                    <script>
+                      let optionsMenuButton{{ $uniqueId ?? '' }} = document.getElementById('optionsMenu{{ $uniqueId ?? '' }}');
+                      let optionsMenuItems{{ $uniqueId ?? '' }} = document.getElementById('options-menu-items-{{ $uniqueId ?? '' }}');
+                      
+                      optionsMenuButton{{ $uniqueId ?? '' }}.addEventListener('click', () => {
+                        let expanded{{ $uniqueId ?? '' }} = optionsMenuButton{{ $uniqueId ?? '' }}.getAttribute('aria-expanded') === 'true' || false;
+                        optionsMenuButton{{ $uniqueId ?? '' }}.setAttribute('aria-expanded', !expanded{{ $uniqueId ?? '' }});
+                        optionsMenuItems{{ $uniqueId ?? '' }}.classList.toggle('hidden');
+                      });
+                    </script>
+
+                    <script>
+                      function deletePost(e) {
+                        'use strict';
+                        if(confirm('本当に削除してもいいですか？')){
+                          document.getElementById('delete_' + e.dataset.id).submit();
+                                            }
+                      }
+                    </script>
+
+
+                    </div>
+                    
 
 
 
@@ -230,7 +303,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+         
           
 
 </x-app-layout>
