@@ -200,9 +200,19 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $article, $team)
     {
-        //
+        $article = Article::findOrFail($article);
+        $article->body = $request->body;
+        $article->save();
+
+        return redirect()
+        ->route('article.index',['team' => $team]);
+
+
+
+
+        
     }
 
     /**

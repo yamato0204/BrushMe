@@ -60,7 +60,7 @@
 
 
 
-      <form method="POST" action="{{ route('article.update' ,$article->id)}}" >
+      <form method="POST" action="{{ route('article.comment' ,$article->id)}}" >
       @csrf
       <div class="w-full mb-8 p-4 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
       <!--  <div class="h-24 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
