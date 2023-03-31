@@ -15,7 +15,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <!-- min-h-screen-->
+        <!-- min-h-screen-->    
     </head>
     <body class="font-sans antialiased">
         <div class="fixed w-full">
