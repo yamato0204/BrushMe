@@ -50,44 +50,30 @@
 
 
                 <div class="p-4 lg:w-full sm:w-full w-full">
-                    <h2 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-sm text-center sm:text-left">参加メンバー</h2>
+                    <h3 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-sm text-center sm:text-left">参加メンバー</h3>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
+                      @if(!empty($users))
+                      @foreach($users as $user)
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                         <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>First Link
+                          </svg>-->
+                        </span>{{ $user->name }}
                       </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>Second Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>Third Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>Fourth Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>Fifth Link
+                      @endforeach
+                      @endif
+                      @isset($count)
 
+                      <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">
+           
+                        +{{$count}}
+                       
                       </a>
+                      @endisset
+
+                     
+                     
                     </nav>
                   </div>
 
