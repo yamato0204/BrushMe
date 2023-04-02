@@ -11,7 +11,7 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
-    public function update(Request $request, $id)
+    public function comment(Request $request, $id)
     {
 
        

@@ -7,6 +7,7 @@ window.axios = require('axios');
 //==========ここから追加==========
 import '../css/app.css'
 import Vue from 'vue'
+import 'flowbite';
 import ArticleLike from './components/ArticleLike'
 import FollowButton from './components/FollowButton'
 import TabMenu from './components/TabMenu'
