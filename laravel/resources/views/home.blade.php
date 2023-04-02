@@ -21,6 +21,7 @@
 
 
               
+              <a href="{{ route('user.show', ['name' => $user->name]) }}">
                   <div class="w-full mt-16 mb-16 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
                     <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
                     
@@ -44,6 +45,7 @@
                     </div>
                   </div>
 
+                </a>
 
                 
 
