@@ -76,28 +76,57 @@ class TeamController extends Controller
 
         $article=Article::whereTeam_id($team_id)->first();
 
+        if($team->teamUser()->where('user_id',Auth::id())->where('is_member',true)->first())
+        {
+            $member=true;
+        };
+
+       // dd($member);
+
         $users_count = $team->teamUser()->where('is_member',true)->count();
 
-        $users = $team->teamUser()->where('is_member',true)->limit(4)->get();
+        $users = $team->teamUser()->where('is_member',true)->limit(2)->get();
        
         
 
-        if($users_count > 4)
+        if($users_count > 2)
         {
-            $count = $users_count - 4; 
-            return view('article.article', compact('articles','team','users','count'));
+            $count = $users_count - 2; 
+            return view('article.article', compact('articles','team','users','count','member'));
 
         }
 
-        if(!isset($article) && $users_count > 4){
-            return view('article.article', compact('team','users','count'));
+        if(!isset($article) && $users_count > 2){
+            return view('article.article', compact('team','users','count','member'));
         }
 
        // limit(1)->get();
         
-        return view('article.article', compact('articles','team','users'));
+        return view('article.article', compact('articles','team','users','member'));
        
     }
+
+
+
+    public function member($id)
+    {
+
+        $team = Team::findOrFail($id);
+
+        $users = $team->teamUser()->where('is_member',true)->get();
+
+        return view('team.member', compact('team','users'));
+    }
+
+
+
+
+
+
+
+
+
+
    
     /**
      * Show the form for creating a new resource.

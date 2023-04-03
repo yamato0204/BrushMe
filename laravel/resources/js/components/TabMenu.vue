@@ -40,40 +40,6 @@
 
 
                         </div>
-        
-
-
-            
-           
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           </div>
           <div v-show="active === 2">
@@ -81,18 +47,7 @@
           </div>
         </div>
 
-
-
-
-
-
-
-
 </template>
-
-
-
-
 
 <script>
 export default{

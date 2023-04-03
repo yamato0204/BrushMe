@@ -25,6 +25,7 @@
           
        
         </div>
+        @if($member)
           <div class="flex justify-center md:justify-end" >
             <button onclick="location.href='{{ route('article.create',$team->id) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -34,6 +35,7 @@
               </button>
               
             </div>
+            @endif
       </div>
       
     </x-slot>
@@ -50,7 +52,8 @@
 
 
                 <div class="p-4 lg:w-full sm:w-full w-full">
-                    <h3 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-sm text-center sm:text-left">参加メンバー</h3>
+                    <h3 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-center sm:text-left">参加メンバー</h3>
+                    
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                       @if(!empty($users))
                       @foreach($users as $user)
@@ -65,15 +68,18 @@
                       @endif
                       @isset($count)
 
-                      <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">
+                      <div class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full " >
            
                         +{{$count}}
                        
-                      </a>
+                      </div>
+                      <button onclick="location.href=''" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        メンバー一覧
+                      </button>
                       @endisset
 
                      
-                     
+      
                     </nav>
                   </div>
 

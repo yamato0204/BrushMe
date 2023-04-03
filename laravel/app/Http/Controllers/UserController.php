@@ -52,7 +52,11 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->first();
         $user_id=$user->id;
-        $teams= $user->teamUser()->where('is_member',true)->get();
+        $teams = $user->teamUser()->where('is_member',true)->get();
+
+       // $articles = $user->articles()->get();
+       // dd($articles);
+        
 
         
 
