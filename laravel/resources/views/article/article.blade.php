@@ -25,7 +25,8 @@
           
        
         </div>
-        @if($member)
+        {{$member}}
+        @if($member == true)
           <div class="flex justify-center md:justify-end" >
             <button onclick="location.href='{{ route('article.create',$team->id) }}'" class="mb-4 md:mr-16 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -34,6 +35,10 @@
               
               </button>
               
+            </div>
+            @else
+            <div>
+             
             </div>
             @endif
       </div>

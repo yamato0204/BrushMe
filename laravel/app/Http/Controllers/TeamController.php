@@ -68,27 +68,23 @@ class TeamController extends Controller
         #チーム別の記事一覧を表示
         #チームのid（team_id）を取得
         $team = Team::findOrFail($id);
+
         $team_id=$team->id;
 
-    
     //チームidが１の時のarticle
         $articles=Article::whereTeam_id($team_id)->get();
 
         $article=Article::whereTeam_id($team_id)->first();
 
-        if($team->teamUser()->where('user_id',Auth::id())->where('is_member',true)->first())
-        {
-            $member=true;
-        };
+        $val = $team->teamUser()->where('user_id',Auth::id())->where('is_member',true)->first();
 
-       // dd($member);
+        $member = !is_null($val);
 
         $users_count = $team->teamUser()->where('is_member',true)->count();
 
         $users = $team->teamUser()->where('is_member',true)->limit(2)->get();
        
         
-
         if($users_count > 2)
         {
             $count = $users_count - 2; 
@@ -221,7 +217,6 @@ class TeamController extends Controller
        
        
         
-
      
         return[
             'is_member' => false,
