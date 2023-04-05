@@ -68,36 +68,61 @@ class TeamController extends Controller
         #チーム別の記事一覧を表示
         #チームのid（team_id）を取得
         $team = Team::findOrFail($id);
+
         $team_id=$team->id;
 
-    
     //チームidが１の時のarticle
         $articles=Article::whereTeam_id($team_id)->get();
 
         $article=Article::whereTeam_id($team_id)->first();
 
+        $val = $team->teamUser()->where('user_id',Auth::id())->where('is_member',true)->first();
+
+        $member = !is_null($val);
+
         $users_count = $team->teamUser()->where('is_member',true)->count();
 
-        $users = $team->teamUser()->where('is_member',true)->limit(4)->get();
+        $users = $team->teamUser()->where('is_member',true)->limit(2)->get();
        
         
-
-        if($users_count > 4)
+        if($users_count > 2)
         {
-            $count = $users_count - 4; 
-            return view('article.article', compact('articles','team','users','count'));
+            $count = $users_count - 2; 
+            return view('article.article', compact('articles','team','users','count','member'));
 
         }
 
-        if(!isset($article) && $users_count > 4){
-            return view('article.article', compact('team','users','count'));
+        if(!isset($article) && $users_count > 2){
+            return view('article.article', compact('team','users','count','member'));
         }
 
        // limit(1)->get();
         
-        return view('article.article', compact('articles','team','users'));
+        return view('article.article', compact('articles','team','users','member'));
        
     }
+
+
+
+    public function member($id)
+    {
+
+        $team = Team::findOrFail($id);
+
+        $users = $team->teamUser()->where('is_member',true)->get();
+
+        return view('team.member', compact('team','users'));
+    }
+
+
+
+
+
+
+
+
+
+
    
     /**
      * Show the form for creating a new resource.
@@ -170,13 +195,12 @@ class TeamController extends Controller
 
         $is_false= ['is_member' => false]; 
 
+
         $team->users()->detach($request->user()->id,$is_false);
         $team->users()->attach($request->user()->id, $is_true);
         //または 
         
-        return [
-            'is_member' => true,
-        ];
+        return redirect()->route('article.index',['team'=>$team->id]);
     }
 
     public function exit(Request $request, Team $team)
@@ -187,16 +211,16 @@ class TeamController extends Controller
         //$team->isMember = false;
         $is_false= ['is_member' => false]; 
 
+       
 
        $team->users()->syncWithPivotValues($request->user()->id, $is_false, false);
+      
        
-       
-        
-
+       return redirect()->route('article.index',['team'=>$team->id]);
      
-        return[
+      /* return[
             'is_member' => false,
-        ];
+        ];*/
     }
 
 
