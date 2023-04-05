@@ -195,13 +195,12 @@ class TeamController extends Controller
 
         $is_false= ['is_member' => false]; 
 
+
         $team->users()->detach($request->user()->id,$is_false);
         $team->users()->attach($request->user()->id, $is_true);
         //または 
         
-        return [
-            'is_member' => true,
-        ];
+        return redirect()->route('article.index',['team'=>$team->id]);
     }
 
     public function exit(Request $request, Team $team)
@@ -212,15 +211,16 @@ class TeamController extends Controller
         //$team->isMember = false;
         $is_false= ['is_member' => false]; 
 
+       
 
        $team->users()->syncWithPivotValues($request->user()->id, $is_false, false);
+      
        
-       
-        
+       return redirect()->route('article.index',['team'=>$team->id]);
      
-        return[
+      /* return[
             'is_member' => false,
-        ];
+        ];*/
     }
 
 
