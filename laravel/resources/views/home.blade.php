@@ -2,7 +2,8 @@
   <x-slot name="header">
       
           
-          
+          <h3>参加チーム
+          </h3>
 
       
   </x-slot>
@@ -20,7 +21,7 @@
 
 
 
-              
+              <!--
               <a href="{{ route('user.show', ['name' => $user->name]) }}">
                   <div class="w-full mt-16 mb-16 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
                     <div class="h-48 w-full checker-bg flex items-start justify-start p-4 text-blue-500">
@@ -32,7 +33,12 @@
                     <div></div>
                 
                   </div>
+                  
                     </div>       
+                    
+                    <div class="h-36 ml-8 flex items-start justify-start">
+                                <p>{{ $user->self_introduction }}</p>
+                              </div>
                     <div class="p-4 border-t border-gray-200">
                       <div class="flex items-center justify-between">
                         <div class="flex items-start justify-start ">
@@ -45,7 +51,7 @@
                     </div>
                   </div>
 
-                </a>
+                </a>-->
 
                 
 

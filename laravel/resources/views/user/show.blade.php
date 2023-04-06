@@ -51,10 +51,9 @@
     </div>
               
                
-                <div>
-                 
-
-                </div>
+                <div class="h-20 ml-8 flex items-start justify-start">
+                                <p>{{ $user->self_introduction }}</p>
+                              </div>
                 
                        
                

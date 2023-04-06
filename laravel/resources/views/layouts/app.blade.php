@@ -23,7 +23,7 @@
             @include('layouts.navnav')
 
             <!-- Page Heading -->
-            <header class="z-0 bg-gray-200 shadow  ">
+            <header class="z-0 bg-gray-100 shadow  ">
                 <div class="max-w-7xl mx-auto pt-12 pb-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
