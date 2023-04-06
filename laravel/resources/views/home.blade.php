@@ -2,8 +2,8 @@
   <x-slot name="header">
       
           
-          <h3>参加チーム
-          </h3>
+          <p class="text-center text-new-3xl font-bold md:text-new-4xl">参加チーム
+          </p>
 
       
   </x-slot>

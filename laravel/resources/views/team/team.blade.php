@@ -99,11 +99,7 @@
                             <div class="p-4 border-t border-gray-200">
                               <div class="flex items-center justify-between">
                                 <h1 class="text-gray-600 font-medium">{{$team->name}}</h1>
-                                <button class="text-gray-500 hover:text-gray-900">
-                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                                </button>
+                                
                               </div>
                               <p class="text-gray-400 text-sm my-1"></p>
                             </div>
