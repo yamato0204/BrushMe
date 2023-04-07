@@ -71,7 +71,7 @@ Route::prefix('/articles')->name('article.')->middleware(['auth'])->group(functi
     Route::post('/{article}/comment',[CommentController::class, 'comment'])->name('comment');
     Route::get('/{article}/edit',[ArticleController::class, 'edit'])->name('edit');
     Route::put('/{article}/team/{team}/update',[ArticleController::class, 'update'])->name('update');
-    Route::delete('/{article}/team/{team}/destroy',[ArticleController::class, 'destroy'])->name('destroy');
+    Route::delete('/{article}/destroy',[ArticleController::class, 'destroy'])->name('destroy');
     Route::put('/{article}/like',[ArticleController::class, 'like'])->name('like');
     Route::delete('/{article}/like',[ArticleController::class, 'unlike'])->name('unlike');
 

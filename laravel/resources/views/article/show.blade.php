@@ -17,7 +17,7 @@
         <!--  <div class=" w-2/3 mb-10 lg:mb-0 rounded-lg overflow-hidden"> -->
 
 
-
+<!--
     <div class="w-full mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
         <div class="h-36 w-full  checker-bg flex items-start justify-start p-4 text-blue-500">
             <x-thumbnail :filename="$article->user->filename" type="avatars" />
@@ -54,9 +54,11 @@
         
         </div>
       </div>
+    -->
+ <div id="app">
+    @include('article.card')
 
-
-
+ </div>
 
 
 

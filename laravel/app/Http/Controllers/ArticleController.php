@@ -221,12 +221,16 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($article, $team)
+    public function destroy($article)
     {
 
         
 
-        Article::findOrFail($article)->delete();
+        $article = Article::findOrFail($article);
+        $team = $article->team()->first()->id;
+        
+        $article->delete();
+        
 
         return redirect()
         ->route('article.index',['team' => $team]);
