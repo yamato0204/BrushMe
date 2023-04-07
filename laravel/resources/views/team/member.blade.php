@@ -3,6 +3,9 @@
     
 
 
+       <p class="text-center text-xl font-bold md:text-2xl">
+          参加メンバー一覧
+      </p>
        
 
         

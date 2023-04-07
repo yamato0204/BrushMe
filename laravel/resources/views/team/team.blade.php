@@ -85,6 +85,26 @@
 
                           @foreach($teams as $team)
 
+
+
+
+
+
+
+                           <div class="w-full md:h-30 xl:h-30  mb-8 bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
+          <a href="{{ route('article.index', ['team' => $team->id] )}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg  ">
+            <img class="object-cover w-full rounded-t-lg h-36 md:h-18 md:w-30 md:rounded-none md:rounded-l-lg" src={{ asset('storage/teams/' . $team->filename) }} alt="">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$team->name}}</h5>
+                <p class="p-8 mb-3 font-normal text-gray-700 dark:text-gray-400">{{$team->information}}</p>
+            </div>
+        </a>
+      </div>
+
+
+
+
+                       <!--
                           <a href="{{ route('article.index', ['team' => $team->id] )}}">
                           <div class="w-100 mb-16  bg-white shadow rounded border border-transparent hover:border-blue-500 cursor-pointer">
                             <div class="h-48 w-full checker-bg flex items-center justify-start p-4 text-blue-500">
@@ -104,6 +124,7 @@
                               <p class="text-gray-400 text-sm my-1"></p>
                             </div>
                           </div>
+                        -->
 
                           @endforeach
 
