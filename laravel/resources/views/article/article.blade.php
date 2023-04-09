@@ -79,17 +79,19 @@
       <div class="flex justify-between ">
   <div> 
         <div class="flex -space-x-2 mb-4">
+          <a href="{{ route('team.member',$team->id)}}" class="">
           
           <x-avatars :users="$users ?? ''" />
            
           @isset($count)
            <!-- <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">-->
-           <a class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">
+           <div class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">
            
             +{{$count}}
-           
-          </a>
+           </div>
+         
           @endisset
+           </a>
           </div>
 
 
@@ -169,59 +171,12 @@
 
     <div class="py-1">
          
-        <section class="text-gray-600 body-font mt-44">
-            <div class="container px-5 py-24 mx-auto flex flex-wrap">
-              <div class="lg:w-1/4 md:w-full w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-
-                
-
-
-                <div class="p-4 lg:w-full sm:w-full w-full">
-                    <h3 class="font-medium title-font tracking-widest text-gray-900 mb-4 text-center sm:text-left">参加メンバー</h3>
-                    
-                    <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
-                      @if(!empty($users))
-                      @foreach($users as $user)
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                         <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>-->
-                        </span>{{ $user->name }}
-                      </a>
-                      @endforeach
-                      @endif
-                      @isset($count)
-
-                      <div class="flex items-center justify-center w-8 h-8 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full " >
-           
-                        +{{$count}}
-                       
-                      </div>
-                      
-                      @endisset
-
-                      <button onclick="location.href='{{ route('team.member',$team->id)}}'" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                        メンバー一覧
-                      </button>
-
-                     
-      
-                    </nav>
-                  </div>
-
-
-
-
-                
-              </div>
+         <section class="mt-24 text-gray-600 body-font">
+        <div class="container w-full md:w-2/3 px-5 py-40 mx-auto ">
               <!-- px-5 py-24 mx-auto -->
 
               
-              <div class="flex flex-col flex-wrap lg:py-6 -mb-10 w-full lg:w-7/12 lg:pl-12 lg:ml-24 lg:text-left text-center">
-                <div class="flex flex-col mb-10 lg:items-start items-center">
-
-
+              
 
                  
                     <section class="w-full text-gray-600 body-font">

@@ -56,7 +56,7 @@ Route::prefix('/users')->
     middleware(['auth'])->group(function(){
 
 Route::get('/{name}',[UserController::class, 'show'])->name('user.show');
-
+Route::put('/{name}/goal',[HomeController::class, 'goal'])->name('user.goal');
 Route::put('/{name}/follow',[UserController::class, 'follow'])->name('user.follow');
 Route::delete('/{name}/follow', [UserController::class, 'unfollow'])->name('user.unfollow');
 //{name}に入るのはフォローあるいはフォロー解除される側

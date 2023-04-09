@@ -94,6 +94,17 @@ class HomeController extends Controller
 
     }
 
+
+    public function goal(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->goal = $request->goal;
+        $user->save();
+
+        return redirect()
+            ->route('home');
+    }
+
    
 
 }
