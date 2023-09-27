@@ -12,6 +12,8 @@ SNSです。
 
 <img width="1190" alt="スクリーンショット 2023-09-27 19 07 55" src="https://github.com/yamato0204/BrushMe/assets/114456559/4e7a4736-209d-4250-8770-66964914c673">
 
+<img width="503" alt="スクリーンショット 2023-09-27 19 11 16" src="https://github.com/yamato0204/BrushMe/assets/114456559/39994229-134f-4c07-8714-a69886faac88">
 
 
+<img width="464" alt="スクリーンショット 2023-09-27 19 15 36" src="https://github.com/yamato0204/BrushMe/assets/114456559/139eb0f2-653a-4b44-8319-1c774f2ca402">
 
